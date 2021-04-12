@@ -14,4 +14,15 @@ router.get('/', (req, res) => {
     })
 })
 
+router.post('/', (req, res) => {
+  db.addWidgets()
+    .then(widgets => {
+      res.json(widgets)
+      return null
+    })
+    .catch(err => {
+      res.status(500).send(err.message)
+    })
+})
+
 module.exports = router
