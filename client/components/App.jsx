@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { getWidgets } from '../api'
+import Widget from './Widget'
 
 function App () {
   const [widgets, setWidgets] = useState ([])
@@ -20,7 +21,7 @@ function App () {
     <div>
       <h1>Widgets for the win!</h1>
       <ul>
-        {widgets.map((widget) => <li key={widget.id}>{widget.name}</li>)}
+        {widgets.map((mappyWidget) => <Widget key={mappyWidget.id} myWidget={mappyWidget}/>)}
       </ul>
     </div>
   )
