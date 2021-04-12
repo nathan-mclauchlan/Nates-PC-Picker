@@ -11,7 +11,10 @@ function App () {
         setWidgets(widgets)
         return null
       })
-  })
+      .catch(e => {
+        console.log(e)
+      })
+  }, [count])
 
   console.log(widgets)
   return (
