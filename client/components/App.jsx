@@ -1,19 +1,28 @@
 import React, { useState, useEffect } from 'react'
 import { getWidgets } from '../api'
+import Widget from './Widget.jsx'
 
-function App() {
+function App () {
   const [widgets, setWidgets] = useState([])
 
   useEffect(() => {
     return getWidgets().then((widgets) => {
-      console.log(widgets)
+      setWidgets(widgets)
       return null
     })
   }, [])
 
   return (
     <div>
-      <h1>Widgets for the win!</h1>
+      {widgets.map((widget) => (
+        <Widget
+          key={widget.id}
+          mfg={widget.mfg}
+          inStock={widget.inStock}
+          name={widget.name}
+        />
+      )
+      )}
     </div>
   )
 }
