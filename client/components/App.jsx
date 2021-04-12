@@ -17,9 +17,7 @@ function App () {
       {widgets.map((widget) => (
         <Widget
           key={widget.id}
-          mfg={widget.mfg}
-          inStock={widget.inStock}
-          name={widget.name}
+          widget={widget}
         />
       )
       )}

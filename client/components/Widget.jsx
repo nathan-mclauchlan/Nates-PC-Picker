@@ -1,6 +1,7 @@
 import React from 'react'
 
-const Widget = ({ inStock, mfg, name }) => {
+const Widget = (props) => {
+  const { inStock, mfg, name } = props.widget
   return (
     <>
       <div>
