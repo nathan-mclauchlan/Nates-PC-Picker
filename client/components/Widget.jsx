@@ -6,9 +6,10 @@ const Widget = (props) => {
     <>
       <div>
         <h3>{name}</h3>
-        <h2>{price}</h2>
+        <h5>{price}</h5>
         <h4>{mfg}</h4>
         <p>In stock: {inStock}</p>
+        <br/>
       </div>
     </>
   )

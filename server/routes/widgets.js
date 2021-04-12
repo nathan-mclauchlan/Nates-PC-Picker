@@ -14,4 +14,16 @@ router.get('/', (req, res) => {
     })
 })
 
+router.post('/', (req, res) => {
+  const { inStock, mfg, name, price } = req.body
+  db.addWidget({ inStock, mfg, name, price })
+    .then(() => {
+      res.status(200).send()
+      return null
+    })
+    .catch(err => {
+      res.status(500).send(err.message)
+    })
+})
+
 module.exports = router
