@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react'
+import { getWidgets } from '../api'
 
 function App() {
   const [widgets, setWidgets] = useState([])
 
   useEffect(() => {
-    console.log('using the effect')
+    return getWidgets().then((widgets) => {
+      console.log(widgets)
+      return null
+    })
   }, [])
 
   return (
