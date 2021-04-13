@@ -7,3 +7,10 @@ export function getWidgets () {
     .get(widgetUrl)
     .then(response => response.body)
 }
+
+export function addWidget ({ name, mfg, price, inStock }) {
+  return request
+    .post(widgetUrl)
+    .send({ name, mfg, price: parseInt(price), inStock: parseInt(inStock) })
+    .then(response => response.body)
+}
