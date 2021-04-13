@@ -8,7 +8,8 @@ export function getWidgets () {
     .then(response => response.body)
 }
 
-export function addWidget () {
+export function addWidget (widget) {
+  console.log('I am the Client')
   return request
     .post(widgetUrl)
     .send(widget)

@@ -12,5 +12,6 @@ function getWidgets (db = connection) {
 }
 
 function addWidget (name, price, mfg, inStock, db = connection) {
+  console.log('I am the database')
   return db('widgets').insert({ name, price, mfg, inStock })
 }
