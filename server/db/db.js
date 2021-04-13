@@ -13,9 +13,9 @@ function getWidgets (db = connection) {
 
 function addWidgets (widget, db = connection) {
   return db('widgets').insert({
-    name: 'Green widget',
-    price: 1337,
-    mfg: 'Acme Inc.',
-    inStock: 666
+    name: widget.name,
+    price: widget.price,
+    mfg: widget.mfg,
+    inStock: widget.inStock
   })
 }

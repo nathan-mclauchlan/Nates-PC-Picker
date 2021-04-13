@@ -15,9 +15,10 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  db.addWidgets()
-    .then(widgets => {
-      res.json(widgets)
+  const widget = req.body
+  db.addWidgets(widget)
+    .then(widget => {
+      res.json(widget)
       return null
     })
     .catch(err => {

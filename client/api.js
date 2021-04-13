@@ -8,8 +8,8 @@ export function getWidgets () {
     .then(response => response.body)
 }
 
-export function addWidgets () {
+export function addWidgets (widget) {
   return request
     .post(widgetUrl)
-    .send()
+    .send(widget)
 }
