@@ -9,3 +9,7 @@ module.exports = {
 function getWidgets (db = connection) {
   return db('widgets').select()
 }
+
+function addWidget (db = connection) {
+  return db(widgets).insert({'color': 'Violet'})
+}

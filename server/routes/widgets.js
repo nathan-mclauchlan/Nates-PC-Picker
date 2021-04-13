@@ -14,4 +14,10 @@ router.get('/', (req, res) => {
     })
 })
 
+router.post('/', (req, res) => {
+  console.log('this is the post')
+    db.addWidget()
+      .then(console.log('this is a new post'))
+})
+
 module.exports = router
