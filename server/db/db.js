@@ -3,13 +3,14 @@ const config = require('./knexfile')[environment]
 const connection = require('knex')(config)
 
 module.exports = {
-  getWidgets
+  getWidgets,
+  addWidget
 }
 
 function getWidgets (db = connection) {
   return db('widgets').select()
 }
 
-function addWidget (db = connection) {
-  return db(widgets).insert({'color': 'Violet'})
+function addWidget (name, price, mfg, inStock, db = connection) {
+  return db('widgets').insert({ name, price, mfg, inStock })
 }

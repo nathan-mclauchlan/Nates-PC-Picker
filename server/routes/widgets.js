@@ -15,8 +15,12 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  console.log('this is the post')
-    db.addWidget()
+  // const name = req.body.name
+  // const price = req.body.price
+  // const mfg = req.body.mfg
+  // const inStock = req.body.inStock
+  const { name, price, mfg, inStock } = req.body
+    db.addWidget(name, price, mfg, instock)
       .then(console.log('this is a new post'))
 })
 
