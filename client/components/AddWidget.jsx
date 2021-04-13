@@ -1,26 +1,53 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { addWidgets } from '../api'
 
-const AddWidget = () => {
-  const [widgets, setWidgets] = useState([])
+const initialData = {
+  name: '',
+  price: 0,
+  mfg: '',
+  inStock: 0
+}
 
-  useEffect(() => {
-    addWidgets()
-      .then(widgets => {
-        setWidgets(widgets)
+function AddWidget (props) {
+  const [widgets, setWidgets] = useState(initialData)
+
+  function handleSubmit (e) {
+    e.preventDefault()
+    addWidgets(widgets)
+      .then(() => {
+        setWidgets(initialData)
+        if (props.afterSubmit) props.afterSubmit()
         return null
       })
       .catch(e => {
-        console.log(e)
+        console.log('unluggy')
       })
-  }, [])
+  }
 
-  return (
-    <div className="form">
-      <input type="text"></input>
-      <button className="submit-btn">Submit</button>
+  function handleChange (e) {
+    const newFormData = {
+      ...widgets,
+      [e.target.name]: e.target.value
+    }
+    setWidgets(newFormData)
+  }
+
+  return <form onSubmit={handleSubmit}>
+    <div>
+      <input type='text' name='name' value={widgets.name} onChange={handleChange} placeholder='Enter the widget NOW' />
     </div>
-  )
+    <div>
+      <input type='text' name='price' value={widgets.price} onChange={handleChange} placeholder='Price' />
+    </div>
+    <div>
+      <input type='text' name='mfg' value={widgets.mfg} onChange={handleChange}
+        placeholder='Manufacterer' />
+    </div>
+    <div>
+      <input type='text' name='inStock' value={widgets.inStock} onChange={handleChange} placeholder='In stock' />
+    </div>
+    <input type='submit' value='Save' />
+  </form>
 }
 
 export default AddWidget
