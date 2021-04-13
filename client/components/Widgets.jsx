@@ -1,8 +1,16 @@
 import React from 'react'
+import { deleteWidget } from '../api'
 
 const Widgets = (props) => {
-  return <div>
-    {props.widgets.map((widget, i) => <li key={i}>Name: {widget.name}, In Stock: {widget.inStock}, Manufacturing: {widget.mfg}, Price: {widget.price}</li>)}
-  </div>
+  function handleDelete (id) {
+    deleteWidget(id)
+    props.loadWidgets()
+  }
+  return <>
+    {props.widgets.map((widget, i) => <div>
+      <li key={i}>Name: {widget.name}, In Stock: {widget.inStock}, Manufacturing: {widget.mfg}, Price: {widget.price}</li> 
+      <button onClick={() => handleDelete(widget.id)}>DELETE</button>
+    </div>)}
+  </>
 }
 export default Widgets

@@ -28,7 +28,10 @@ function App () {
   }
   return (
     <div>
-      <Widgets widgets={widgets}/>
+      <Widgets
+        widgets={widgets}
+        loadWidgets={loadWidgets}
+      />
       <button onClick={renderForm}>Add Widget</button>
       { widgetButton &&
       <AddWidget loadWidgets={loadWidgets}/>
