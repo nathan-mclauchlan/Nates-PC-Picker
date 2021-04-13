@@ -8,6 +8,10 @@ function App () {
   const [widgets, setWidgets] = useState([])
 
   useEffect(() => {
+    loadWidgets()
+  }, [])
+
+  function loadWidgets () {
     getWidgets()
       .then(widgets => {
         setWidgets(widgets)
@@ -16,12 +20,11 @@ function App () {
       .catch(e => {
         console.log(e)
       })
-  }, [])
-
+  }
   return (
     <div>
       <Widgets widgets={widgets}/>
-      <AddWidget />
+      <AddWidget loadWidgets={loadWidgets}/>
     </div>
   )
 }

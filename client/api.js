@@ -8,8 +8,9 @@ export function getWidgets () {
     .then(response => response.body)
 }
 
-export function addWidget (widget) {
+export function addWidget ({ name, mfg, price, inStock }) {
   return request
     .post(widgetUrl)
-    .send(widget)
+    .send({ name, mfg, price: parseInt(price), inStock: parseInt(inStock) })
+    .then(response => response.body)
 }

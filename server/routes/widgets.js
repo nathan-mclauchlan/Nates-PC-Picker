@@ -18,7 +18,6 @@ router.post('/', (req, res) => {
   const { name, inStock, mfg, price } = req.body
   db.addWidget({ inStock, mfg, name, price })
     .then((id) => {
-      console.log(id)
       res.status(200).send()
       return null
     })
