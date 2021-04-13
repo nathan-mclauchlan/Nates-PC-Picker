@@ -14,3 +14,9 @@ export function addWidget ({ name, mfg, price, inStock }) {
     .send({ name, mfg, price: parseInt(price), inStock: parseInt(inStock) })
     .then(response => response.body)
 }
+
+export function deleteWidget (id) {
+  return request
+    .delete(widgetUrl + id)
+    .then(response => response.body)
+}

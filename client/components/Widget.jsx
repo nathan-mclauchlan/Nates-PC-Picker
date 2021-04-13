@@ -1,14 +1,19 @@
 import React from 'react'
+import { deleteWidget } from '../api'
 
 const Widget = (props) => {
-  const { inStock, mfg, name, price } = props.widget
+  const { id, inStock, mfg, name, price } = props.widget
+
+  const handleDelete = () => {
+    deleteWidget(id)
+    props.loadWidgets()
+  }
   return (
     <>
       <div>
-        <h3>{name}</h3>
-        <h5>{price}</h5>
-        <h4>{mfg}</h4>
-        <p>In stock: {inStock}</p>
+        <h3>${price} for {name}</h3>
+        <h4>{mfg} ({inStock} in stock)</h4>
+        <button onClick={handleDelete}>Delete</button>
         <br/>
       </div>
     </>

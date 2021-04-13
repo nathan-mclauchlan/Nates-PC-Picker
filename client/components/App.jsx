@@ -20,18 +20,18 @@ function App () {
 
   return (
     <div>
-      {widgets.map((widget) => (
-        <Widget
-          key={widget.id}
-          widget={widget}
-        />
-      )
-      )}
       <button onClick={() => { setShowForm(!showForm) }}>Show/Hide Add Widget Form</button>
       {showForm &&
         <AddWidget loadWidgets={loadWidgets}/>
       }
-
+      {widgets.map((widget) => (
+        <Widget
+          key={widget.id}
+          widget={widget}
+          loadWidgets={loadWidgets}
+        />
+      )
+      )}
     </div>
   )
 }
