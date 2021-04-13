@@ -27,6 +27,7 @@ const AddWidget = (props) => {
       <label htmlFor="inStock">In Stock</label>
       <input onChange={handleChange} type="number" name="inStock" value={formData.inStock}/><br />
       <input type="submit" value="Submit"/>
+      <br/>
     </form>
   </div>
 }

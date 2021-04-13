@@ -1,4 +1,3 @@
-const { response } = require('express')
 const express = require('express')
 const router = express.Router()
 
@@ -39,10 +38,10 @@ router.delete('/:id', (req, res) => {
     })
 })
 
-router.patch('/:id', (req,res) => {
+router.patch('/:id', (req, res) => {
   const id = Number(req.params.id)
-  const { inStock, mfg, name, price } = req.body
-  db.updateWidget(id, { inStock, mfg, name, price })
+  const { inStock, mfg, name, price, rating } = req.body
+  db.updateWidget(id, { inStock, mfg, name, price, rating })
     .then(() => {
       res.sendStatus(200)
       return null
