@@ -14,4 +14,14 @@ router.get('/', (req, res) => {
     })
 })
 
+router.post('/', (req, res) => {
+  // const name = req.body.name
+  // const price = req.body.price
+  // const mfg = req.body.mfg
+  // const inStock = req.body.inStock
+  const { name, price, mfg, inStock } = req.body
+    db.addWidget(name, price, mfg, inStock)
+      .then(console.log('ive added it'))
+})
+
 module.exports = router
