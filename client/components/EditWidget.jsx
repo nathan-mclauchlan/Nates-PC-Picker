@@ -4,6 +4,8 @@ import { updateWidget } from '../api'
 const EditWidget = (props) => {
   const { id, inStock, mfg, name, price, rating } = props.widget
 
+  const ratings = [1, 2, 3, 4, 5]
+
   const [formData, setFormData] = useState({
     inStock, mfg, name, price, rating
   })
@@ -32,21 +34,13 @@ const EditWidget = (props) => {
         <br/>
         <label htmlFor="rating">Rating</label>
         <br/>
-        <label>1</label>
-        <input type="radio" onChange={handleChange} name="rating" value="1"/>
-        <br/>
-        <label>2</label>
-        <input type="radio" onChange={handleChange} name="rating" value="2"/>
-        <br/>
-        <label>3</label>
-        <input type="radio" onChange={handleChange} name="rating" value="3"/>
-        <br/>
-        <label>4</label>
-        <input type="radio" onChange={handleChange} name="rating" value="4"/>
-        <br/>
-        <label>5</label>
-        <input type="radio" onChange={handleChange} name="rating" value="5"/>
-        <br/>
+        {ratings.map((rating) => (
+          <>
+            <label>{rating}</label>
+            <input type="radio" onChange={handleChange} name="rating" value={rating}/>
+            <br/>
+          </>
+        ))}
         <input type="submit" value="Save" />
         <br/>
       </form>
