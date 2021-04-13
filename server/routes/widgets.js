@@ -1,3 +1,4 @@
+const { response } = require('express')
 const express = require('express')
 const router = express.Router()
 
@@ -29,8 +30,20 @@ router.post('/', (req, res) => {
 router.delete('/:id', (req, res) => {
   const id = Number(req.params.id)
   db.deleteWidget(id)
-    .then((item) => {
-      console.log(item)
+    .then(() => {
+      res.sendStatus(200)
+      return null
+    })
+    .catch(err => {
+      res.status(500).send(err.message)
+    })
+})
+
+router.patch('/:id', (req,res) => {
+  const id = Number(req.params.id)
+  const { inStock, mfg, name, price } = req.body
+  db.updateWidget(id, { inStock, mfg, name, price })
+    .then(() => {
       res.sendStatus(200)
       return null
     })

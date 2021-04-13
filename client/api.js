@@ -20,3 +20,10 @@ export function deleteWidget (id) {
     .delete(widgetUrl + id)
     .then(response => response.body)
 }
+
+export function updateWidget (id, update) {
+  return request
+    .patch(widgetUrl + id)
+    .send(update)
+    .then(response => response.body)
+}

@@ -18,14 +18,14 @@ const AddWidget = (props) => {
 
   return <div>
     <form onSubmit={handleSubmit}>
-      <label htmlFor="name">Widget Name</label><br/>
-      <input onChange={handleChange} type="text" name="name"/><br/>
-      <label htmlFor="mfg">Manufacturer</label><br/>
-      <input onChange={handleChange} type="text" name="mfg"/><br />
-      <label htmlFor="price">Price</label><br/>
-      <input onChange={handleChange} type="number" name="price"/><br />
-      <label htmlFor="inStock">In Stock</label><br/>
-      <input onChange={handleChange} type="number" name="inStock"/><br />
+      <label htmlFor="name">Widget Name</label>
+      <input onChange={handleChange} type="text" name="name" value={formData.name}/><br/>
+      <label htmlFor="mfg">Manufacturer</label>
+      <input onChange={handleChange} type="text" name="mfg" value={formData.mfg}/><br />
+      <label htmlFor="price">Price</label>
+      <input onChange={handleChange} type="number" name="price" value={formData.price}/><br />
+      <label htmlFor="inStock">In Stock</label>
+      <input onChange={handleChange} type="number" name="inStock" value={formData.inStock}/><br />
       <input type="submit" value="Submit"/>
     </form>
   </div>
