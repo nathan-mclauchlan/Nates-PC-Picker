@@ -6,6 +6,7 @@ import AddWidget from './AddWidget'
 
 function App () {
   const [widgets, setWidgets] = useState([])
+  const [widgetButton, setAddWidgetButton] = useState(false)
 
   useEffect(() => {
     loadWidgets()
@@ -21,10 +22,17 @@ function App () {
         console.log(e)
       })
   }
+
+  function renderForm () {
+    setAddWidgetButton(true)
+  }
   return (
     <div>
       <Widgets widgets={widgets}/>
+      <button onClick={renderForm}>Add Widget</button>
+      { widgetButton &&
       <AddWidget loadWidgets={loadWidgets}/>
+      }
     </div>
   )
 }
