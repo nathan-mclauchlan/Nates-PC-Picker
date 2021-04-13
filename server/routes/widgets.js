@@ -20,8 +20,37 @@ router.post('/', (req, res) => {
   const mfg = req.body.mfg
   const inStock = req.body.inStock 
   
-  db.addWidgets(name, price, mfg, inStock)
-    .then(res.status(200).send())
+    db.addWidgets(name, price, mfg, inStock)
+    .then(() => {
+      res.status(200).send()
+      return null})
+    .catch(err => {
+      res.status(500).send(err.message)
+    })
+})
+
+router.delete('/:id', (req, res) => {
+  const id = req.params.id
+
+  db.delWidget(id)
+    .then(() => {
+      res.status(200).send()
+      return null
+    })
+    .catch(err => {
+      res.status(500).send(err.message)
+    })
+})
+
+router.patch('/:id', (req, res) => {
+  const id = req.params.id
+  const { name, price, mfg, inStock } = req.body
+
+  db.updateWidget(id, name, price, mfg, inStock)
+    .then(() => {
+      res.status(200).send()
+      return null
+    })
     .catch(err => {
       res.status(500).send(err.message)
     })

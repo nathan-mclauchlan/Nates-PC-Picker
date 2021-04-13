@@ -13,3 +13,15 @@ export function addWidgets (data) {
     .post(widgetUrl)
     .send(data)
 }
+
+export function delWidget (id) {
+  return request
+    .delete(widgetUrl + id)
+    .then(res => res.body)
+}
+
+export function updateWidget (id, data) {
+  return request
+  .patch(widgetUrl + id)
+  .send(data)
+}
