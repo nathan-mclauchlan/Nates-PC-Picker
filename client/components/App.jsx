@@ -23,6 +23,10 @@ function App () {
       <ul>
         {widgets.map((mappyWidget) => <Widget key={mappyWidget.id} myWidget={mappyWidget}/>)}
       </ul>
+      <form>
+        <input></input>
+        <input type='submit'>Save</input>
+      </form>
     </div>
   )
 }
