@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import { addWidget } from '../api'
 
 const AddWidget = (props) => {
-  const { count, setCount } = props
-
   const [formData, setFormData] = useState({
     name: '', mfg: '', price: 0, inStock: 0
   })
@@ -15,7 +13,7 @@ const AddWidget = (props) => {
   const handleSubmit = (e) => {
     addWidget(formData)
     e.preventDefault()
-    setCount(count + 1)
+    props.loadWidgets()
   }
 
   return <div>

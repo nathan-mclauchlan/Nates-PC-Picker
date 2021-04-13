@@ -18,7 +18,20 @@ router.post('/', (req, res) => {
   const { inStock, mfg, name, price } = req.body
   db.addWidget({ inStock, mfg, name, price })
     .then(() => {
-      res.status(200).send()
+      res.sendStatus(200)
+      return null
+    })
+    .catch(err => {
+      res.status(500).send(err.message)
+    })
+})
+
+router.delete('/:id', (req, res) => {
+  const id = Number(req.params.id)
+  db.deleteWidget(id)
+    .then((item) => {
+      console.log(item)
+      res.sendStatus(200)
       return null
     })
     .catch(err => {

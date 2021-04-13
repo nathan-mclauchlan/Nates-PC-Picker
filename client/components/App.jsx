@@ -5,16 +5,18 @@ import AddWidget from './AddWidget'
 
 function App () {
   const [widgets, setWidgets] = useState([])
-  const [count, setCount] = useState(0)
   const [showForm, setShowForm] = useState(false)
 
-
-  useEffect(() => {
+  const loadWidgets = () => {
     return getWidgets().then((widgets) => {
       setWidgets(widgets)
       return null
     })
-  }, [count])
+  }
+
+  useEffect(() => {
+    loadWidgets()
+  }, [])
 
   return (
     <div>
@@ -27,7 +29,7 @@ function App () {
       )}
       <button onClick={() => { setShowForm(!showForm) }}>Show/Hide Add Widget Form</button>
       {showForm &&
-        <AddWidget count={count} setCount={setCount}/>
+        <AddWidget loadWidgets={loadWidgets}/>
       }
 
     </div>
