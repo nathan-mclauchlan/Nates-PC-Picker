@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { getWidgets } from '../api'
+import { AddWidget } from './AddWidget'
 
 function App () {
   const [widgets, setWidgets] = useState([])
-  const [count, setCount] = useState(0)
 
   useEffect(() => {
+    loadWidgets()
+  }, [])
+
+  function loadWidgets () {
     getWidgets()
       .then(widgets => {
         setWidgets(widgets)
@@ -14,14 +18,12 @@ function App () {
       .catch(e => {
         console.log(e)
       })
-  }, [count])
+  }
 
-  console.log(widgets)
   return (
     <div>
       <h1>Widgets for the win!</h1>
-      {count}
-      <button onClick={() => setCount(count + 1)}>Click</button>
+      <AddWidget afterSubmit={loadWidgets}/>
       <ul>
         {widgets.map((widget) => <li key={widget.id}>{widget.name}</li>)}
       </ul>
