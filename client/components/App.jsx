@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 function App () {
   const [] = useState('')
 
+
+  useEffect(() => {
+    console.log('using the effect')
+  }, [])
 
   return (
     <div>
