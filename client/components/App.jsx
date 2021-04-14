@@ -4,13 +4,14 @@ import { getWidgets } from '../api'
 
 
 function App () {
-  const [widgets, setWidgets] = useState('')
+  const [widgets, setWidgets] = useState([])
 
 
   useEffect(() => {
     getWidgets()
       .then(widgets => {
         setWidgets(widgets)
+        
         return null
       })
       .catch(e => {
@@ -18,11 +19,16 @@ function App () {
       })  
   }, [])
 
+  {console.log(widgets)}
+
   return (
     <div>
       <h1>Widgets for the win!</h1>
       <ul>
-        {widgets.map((widget) => <li key ={widget.id}>{ widget.name }</li>)}
+        {widgets.map(widget => {
+          return <li key ={widget.id}>{widget.name}</li>
+        }
+        )}
       </ul>
     </div>
   )
