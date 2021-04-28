@@ -1,0 +1,38 @@
+exports.up = (knex) => {
+  return knex.schema.createTable('case', (table) => {
+    table.increments('id').primary()
+    table.string('name')
+    table.string('model')
+    table.string('formFactor')
+    table.string('mbSupport')
+    table.string('cpuCooler')
+    table.string('psu')
+    table.integer('expansionSlots')
+    table.integer('fiveDriveMax')
+    table.integer('threeDriveMax')
+    table.integer('twoDriveMax')
+    table.integer('topFanMax')
+    table.string('topFanSize')
+    table.integer('frontFanMax')
+    table.string('frontFanSize')
+    table.integer('rearFanMax')
+    table.string('rearFanSize')
+    table.integer('bottomFanMax')
+    table.string('bottomFanSize')
+    table.integer('sideFanMax')
+    table.string('sideFanSize')
+    table.string('rearRadSize')
+    table.string('topRadSize')
+    table.string('bottomRadSize')
+    table.string('sideRadSize')
+    table.string('frontRadSize')
+    table.string('pusMaxSize')
+    table.string('gpuMaxH')
+    table.string('gpuMaxL')
+    table.string('gpuMaxW')
+  })
+}
+
+exports.down = (knex) => {
+  return knex.schema.dropTable('case')
+}
